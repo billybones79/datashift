@@ -86,7 +86,7 @@ module DataShift
       paperclip_attributes.merge!(options[:attributes]) if(options[:attributes])
 
       begin
-        @attachment = klass.new(paperclip_attributes, :without_protection => true)
+        @attachment = klass.new(paperclip_attributes)
       rescue => e
         logger.error( e.backtrace)
         logger.error("Failed to create PaperClip Attachment for cl;ass #{klass} : #{e.inspect}")

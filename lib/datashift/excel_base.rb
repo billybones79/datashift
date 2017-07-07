@@ -38,6 +38,7 @@ module ExcelBase
       @excel_headers << header
     end
 
+    @headers = @excel_headers
     @excel_headers
   end
 

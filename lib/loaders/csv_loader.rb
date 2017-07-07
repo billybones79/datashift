@@ -43,8 +43,9 @@ module DataShift
 
       # Create a method_mapper which maps list of headers into suitable calls on the Active Record class
       # For example if model has an attribute 'price' will map columns called Price, price, PRICE etc to this attribute
-      populate_method_mapper_from_headers( @parsed_file.shift, options)
-
+      @headers= @parsed_file.shift
+      populate_method_mapper_from_headers( @headers, options)
+      @headers
       puts "\n\n\nLoading from CSV file: #{file_name}"
       puts "Processing #{@parsed_file.size} rows"
       begin
@@ -55,6 +56,9 @@ module DataShift
           @parsed_file.each_with_index do |row, i|
 
             @current_row = row
+            puts "\n\n\nmais osite que ca suckkkk"
+
+            new_load_object
 
             @reporter.processed_object_count += 1
 
@@ -97,7 +101,6 @@ module DataShift
               end
 
               # don't forget to reset the load object 
-              new_load_object
               next
             end
 
@@ -108,7 +111,6 @@ module DataShift
             save
 
             # don't forget to reset the object or we'll update rather than create
-            new_load_object
           end
 
           raise ActiveRecord::Rollback if(options[:dummy]) # Don't actually create/upload to DB if we are doing dummy run

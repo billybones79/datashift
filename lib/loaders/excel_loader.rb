@@ -81,6 +81,8 @@ module DataShift
 
             current_row_idx = i
             @current_row = row
+            new_load_object
+
 
             next if(current_row_idx == header_row_index)
 
@@ -107,7 +109,6 @@ module DataShift
               process_excel_failure(e, true)
 
               # don't forget to reset the load object
-              new_load_object
               next
             end
 
@@ -120,8 +121,6 @@ module DataShift
 
             save_and_report
 
-            # don't forget to reset the object or we'll update rather than create
-            new_load_object
 
           end   # all rows processed
 

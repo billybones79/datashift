@@ -56,7 +56,6 @@ module DataShift
           @parsed_file.each_with_index do |row, i|
 
             @current_row = row
-            puts "\n\n\nmais osite que ca suckkkk"
 
             new_load_object
 

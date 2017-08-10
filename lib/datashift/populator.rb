@@ -106,11 +106,13 @@ module DataShift
         else
           @current_value = value.to_s
 
-          attribute_hash = @current_value.slice!(@prepare_data_const_regexp)
+          if @current_value.match(@prepare_data_const_regexp)
+            attribute_hash = @current_value.slice!(@prepare_data_const_regexp)
 
-          if(attribute_hash)
-            @current_attribute_hash = Populator::string_to_hash( attribute_hash )
-            logger.info "Populator for #{@current_value} has attributes #{@current_attribute_hash.inspect}"
+            if(attribute_hash)
+              @current_attribute_hash = Populator::string_to_hash( attribute_hash )
+              logger.info "Populator for #{@current_value} has attributes #{@current_attribute_hash.inspect}"
+            end
           end
         end
 
@@ -145,8 +147,8 @@ module DataShift
       rescue => e
         logger.error("populator failed to prepare data supplied for operator #{method_detail.operator}")
         logger.error("populator error: #{e.inspect}")
-        logger.error("populator stacktrace: #{e.backtrace.last}")
-        raise DataProcessingError.new("opulator failed to prepare data #{value} for operator #{method_detail.operator}")
+        logger.error("populator stacktrace: #{e.backtrace}")
+        raise DataProcessingError.new("populator failed to prepare data #{value} for operator #{method_detail.operator}")
       end
 
       return @current_value, @current_attribute_hash
@@ -235,6 +237,7 @@ module DataShift
           rescue => e
             if f == Populator::insistent_method_list.last
               logger.error(e.inspect)
+              logger.error(e.backtrace)
               logger.error("Failed to assign [#{value}] via operator #{operator}")
               raise "Failed to assign [#{value}] to #{operator}" unless value.nil?
             end

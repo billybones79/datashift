@@ -14,28 +14,11 @@ Gem::Specification.new do |s|
 
   s.description = "Comprehensive import/export tools between Excel/CSV & ActiveRecord Databases, Rails apps, and any Ruby project."
   s.email = "rubygems@autotelik.co.uk"
-  s.extra_rdoc_files = [
-    "LICENSE.txt",
-    "README.markdown",
-    "README.rdoc"
-  ]
   
-  s.test_files = FileList["{spec}/*"]
+  s.test_files = Dir['spec/**/*']
   
-  s.files = FileList[
-    "LICENSE.txt",
-    "README.markdown",
-    "README.rdoc",
-    "Rakefile",
-    "VERSION",
-    "datashift.gemspec",
-    "tasks/config/seed_fu_product_template.erb",
-    "tasks/config/tidy_config.txt",
-    "tasks/db_tasks.rake",
-    "tasks/file_tasks.rake",
-    "tasks/word_to_seedfu.rake",
-    "{lib}/**/*"].exclude("rdoc").exclude("nbproject").exclude("fixtures").exclude(".log").exclude(".contrib").to_a
-  
+  s.files =   s.files = Dir['{lib}/**/*', 'spec/factories/**/*', 'LICENSE', 'Rakefile', 'README.markdown', 'datashift.thor']
+
   s.homepage = "http://github.com/autotelik/datashift"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]

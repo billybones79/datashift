@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   
   s.test_files = Dir['spec/**/*']
   
-  s.files =   s.files = Dir['{lib}/**/*', 'spec/factories/**/*', 'LICENSE', 'Rakefile', 'README.markdown', 'datashift.thor']
+  s.files =   s.files = Dir['{lib}/**/*', 'spec/factories/**/*', 'tasks/*', 'LICENSE.txt', "VERSION", "datashift.gemspec",	'Rakefile', "README.rdoc", 'README.markdown', 'datashift.thor']
 
   s.homepage = "http://github.com/autotelik/datashift"
   s.licenses = ["MIT"]

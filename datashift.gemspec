@@ -1,4 +1,3 @@
-require 'rake'
 
 #TODO version = File.read("VERSION").strip
   

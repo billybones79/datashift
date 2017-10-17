@@ -1,7 +1,5 @@
 $LOAD_PATH.push File.expand_path('../lib', __FILE__)
 
-require 'rake'
-
 #TODO version = File.read("VERSION").strip
   
 Gem::Specification.new do |s|

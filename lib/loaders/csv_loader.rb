@@ -56,7 +56,6 @@ module DataShift
           @parsed_file.each_with_index do |row, i|
 
             @current_row = row
-            puts "\n\n\nmais osite que ca suckkkk"
 
             new_load_object
 
@@ -108,7 +107,7 @@ module DataShift
 
             logger.debug "Attempting Save on : #{load_object.inspect}"
 
-            save_and_report
+            save
 
             # don't forget to reset the object or we'll update rather than create
           end

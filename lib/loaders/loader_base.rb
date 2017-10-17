@@ -425,7 +425,6 @@ module DataShift
 
 
     def new_load_object
-      puts "mais voyons calisse que y call pas le bon"
       @load_object = @load_object_class.new
       @load_object
     end
